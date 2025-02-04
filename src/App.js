@@ -1,18 +1,14 @@
 import './App.css';
 
+function Phone(colors) {
+  return <h2>my phone color is {colors.color}.</h2>
+}
+
 function App() {
-
-  const x = 5;
-  let text = 'goodbye';
-  if (x < 10) {
-    text = 'hello';
-  }
-
-  const myText = text;
-
   return (
     <div className="App-header">
-      <p>{myText}</p>
+      <h2>What your phone color?</h2>
+      <Phone color="blue" />
     </div>
   );
 }
