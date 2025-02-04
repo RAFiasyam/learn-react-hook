@@ -1,27 +1,14 @@
 import './App.css';
 
-function MissedGoal() {
-  return <h1>MISSED!</h1>;
+function Mobil(props) {
+  return <li>Im a {props.brand}</li>
 }
-
-function MadeGoal() {
-  return <h1>Goal!</h1>;
-}
-
-function Goal(props) {
-  const isGoal = props.isGoal;
-  return (
-    <>
-      {isGoal ? <MadeGoal /> : <MissedGoal />}
-    </>
-  )
-}
-
 
 function App() {
+  const mobils = ['Honda', 'Toyota', 'Nissan']
   return (
     <div className="App-header">
-      <Goal isGoal={true} />
+      {mobils.map((mobil) => <Mobil brand={mobil} />)}
     </div>
   );
 }
