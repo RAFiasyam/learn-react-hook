@@ -11,7 +11,7 @@ function App() {
         <label>
           <input
             type='text'
-            placeholder='type shit...'
+            placeholder='type name here...'
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
