@@ -5,10 +5,11 @@ function Phone(colors) {
 }
 
 function App() {
+  const colorName = "blue";
   return (
     <div className="App-header">
       <h2>What your phone color?</h2>
-      <Phone color="blue" />
+      <Phone color={colorName} />
     </div>
   );
 }
