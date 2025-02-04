@@ -5,6 +5,11 @@ import './App.css';
 function App() {
   const [name, setName] = useState('')
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(`That your name right? ${name}!?`)
+  }
+
   return (
     <div className="App-header">
       <form>
@@ -16,6 +21,7 @@ function App() {
             onChange={(e) => setName(e.target.value)}
           />
         </label>
+        <input type='submit' onClick={handleSubmit} />
       </form>
     </div>
   );
