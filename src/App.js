@@ -1,13 +1,13 @@
 import './App.css';
 
 function App() {
-  const say = () => {
-    alert("happy birthday!")
+  const say = (a) => {
+    alert(a)
   }
 
   return (
     <div className="App-header">
-      <button onClick={say}>hit this to say happy birthday</button>
+      <button onClick={() => say("happy birthday!")}>hit this to say happy birthday</button>
     </div>
   );
 }
