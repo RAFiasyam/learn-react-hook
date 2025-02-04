@@ -3,18 +3,20 @@ import './App.css';
 
 
 function App() {
-  const [textarea, setTextarea] = useState(
-    "The content of a textarea goes in the value attribute"
-  );
+  const [car, setCar] = useState('Toyota');
 
   const handleChange = (event) => {
-    setTextarea(event.target.value)
+    setCar(event.target.value)
   }
 
   return (
     <div className="App-header">
       <form>
-        <textarea value={textarea} onChange={handleChange} />
+        <select value={car} onChange={handleChange}>
+          <option value="Honda">Honda</option>
+          <option value="Toyota">Toyota</option>
+          <option value="Nissan">Nissan</option>
+        </select>
       </form>
     </div>
   );
