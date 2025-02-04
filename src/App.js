@@ -1,19 +1,22 @@
 import './App.css';
 
+function Mobil({ mobils }) {
+  return (
+    <div>
+      {mobils.length > 0 && (
+        <h2>
+          I have {mobils.length} in my garage.
+        </h2>
+      )}
+    </div>
+  );
+}
+
 function App() {
-  const numberRafi = 85;
-
-  const filter = () => {
-    if (numberRafi > 90) {
-      return "Selamat! Rafi lulus";
-    } else {
-      return "Selamat! Rafi tidak lulus";
-    }
-  }
-
+  const mobils = ['BMW', 'Pagani', 'Nissan'];
   return (
     <div className="App-header">
-      <p>{filter()}</p>
+      <Mobil mobils={mobils} />
     </div>
   );
 }
