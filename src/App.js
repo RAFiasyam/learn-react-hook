@@ -1,22 +1,27 @@
 import './App.css';
 
-function Mobil({ mobils }) {
-  return (
-    <div>
-      {mobils.length > 0 && (
-        <h2>
-          I have {mobils.length} in my garage.
-        </h2>
-      )}
-    </div>
-  );
+function MissedGoal() {
+  return <h1>MISSED!</h1>;
 }
 
+function MadeGoal() {
+  return <h1>Goal!</h1>;
+}
+
+function Goal(props) {
+  const isGoal = props.isGoal;
+  return (
+    <>
+      {isGoal ? <MadeGoal /> : <MissedGoal />}
+    </>
+  )
+}
+
+
 function App() {
-  const mobils = ['BMW', 'Pagani', 'Nissan'];
   return (
     <div className="App-header">
-      <Mobil mobils={mobils} />
+      <Goal isGoal={true} />
     </div>
   );
 }
