@@ -1,14 +1,20 @@
 import './App.css';
 
 function Mobil(props) {
-  return <li>Im a {props.brand}</li>
+  return <li>I have 1 brand car {props.brand}</li>
 }
 
 function App() {
-  const mobils = ['Honda', 'Toyota', 'Nissan']
+  const mobils = [
+    { id: 1, brand: 'Honda' },
+    { id: 2, brand: 'Toyota' },
+    { id: 3, brand: 'Nissan' }
+  ];
   return (
     <div className="App-header">
-      {mobils.map((mobil) => <Mobil brand={mobil} />)}
+      <ul>
+        {mobils.map((mobil) => <Mobil key={mobil.id} brand={mobil.brand} />)}
+      </ul>
     </div>
   );
 }
