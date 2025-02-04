@@ -1,13 +1,19 @@
 import './App.css';
 
 function App() {
-  const say = (a, b) => {
-    alert(b.type)
+  const numberRafi = 85;
+
+  const filter = () => {
+    if (numberRafi > 90) {
+      return "Selamat! Rafi lulus";
+    } else {
+      return "Selamat! Rafi tidak lulus";
+    }
   }
 
   return (
     <div className="App-header">
-      <button onClick={(event) => say("happy birthday!", event)}>hit this to say happy birthday</button>
+      <p>{filter()}</p>
     </div>
   );
 }
