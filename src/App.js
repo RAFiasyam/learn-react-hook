@@ -1,23 +1,25 @@
-import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
+import Layout from './pages/Layout';
+import Home from './pages/Home';
+import Blogs from './pages/Blogs';
+import Contact from './pages/Contact';
+import NoPage from './pages/NoPage';
 
 
 function App() {
-  const [car, setCar] = useState('Toyota');
-
-  const handleChange = (event) => {
-    setCar(event.target.value)
-  }
-
   return (
     <div className="App-header">
-      <form>
-        <select value={car} onChange={handleChange}>
-          <option value="Honda">Honda</option>
-          <option value="Toyota">Toyota</option>
-          <option value="Nissan">Nissan</option>
-        </select>
-      </form>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path='blogs' element={<Blogs />} />
+            <Route path='contact' element={<Contact />} />
+            <Route path='*' element={<NoPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
