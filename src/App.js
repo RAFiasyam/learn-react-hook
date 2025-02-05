@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div>
-      <h1>my fav color is {color}</h1>
+      <h1>my fav color is <span style={{ color: color, fontStyle: 'italic' }}>{color}</span></h1>
       <div>
         <button
           style={{ background: 'red', color: 'white' }}
