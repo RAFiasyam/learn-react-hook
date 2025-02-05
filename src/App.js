@@ -3,51 +3,19 @@ import './App.css';
 
 
 function App() {
-  const [color, setColor] = useState('blue')
+  const [car] = useState({
+    brand: 'Nissan',
+    model: 'nissan 180sx',
+    year: '1989 ',
+    color: 'marron',
+    image: 'https://i.pinimg.com/736x/a5/91/dd/a591dde1f48d9a6369310fcf0ee91119.jpg'
+  })
 
   return (
     <div>
-      <h1>my fav color is <span style={{ color: color, fontStyle: 'italic' }}>{color}</span></h1>
-      <div>
-        <button
-          style={{ background: 'red', color: 'white' }}
-          type='button'
-          onClick={() => setColor("red")}
-        >Red
-        </button>
-      </div>
-      <div>
-        <button
-          style={{ background: 'pink', color: 'black' }}
-          type='button'
-          onClick={() => setColor("pink")}
-        >Pink
-        </button>
-      </div>
-      <div>
-        <button
-          style={{ background: 'yellow', color: 'black' }}
-          type='button'
-          onClick={() => setColor("yellow")}
-        >Yellow
-        </button>
-      </div>
-      <div>
-        <button
-          style={{ background: 'blue', color: 'white' }}
-          type='button'
-          onClick={() => setColor("blue")}
-        >Blue
-        </button>
-      </div>
-      <div>
-        <button
-          style={{ background: 'green', color: 'white' }}
-          type='button'
-          onClick={() => setColor("green")}
-        >Green
-        </button>
-      </div>
+      <img src={car.image} width='550px' style={{borderRadius: 30 }} alt='car' />
+      <h1>My {car.brand} </h1>
+      <p>its a {car.year} {car.model} n have {car.color} color🤤.</p>
     </div>
   );
 }
