@@ -6,7 +6,7 @@ function App() {
   const [car, setCar] = useState({
     brand: 'Nissan',
     model: 'nissan 180sx',
-    year: '1989 ',
+    year: 1989,
     color: 'maroon',
     image: 'https://i.pinimg.com/736x/a5/91/dd/a591dde1f48d9a6369310fcf0ee91119.jpg'
   });
