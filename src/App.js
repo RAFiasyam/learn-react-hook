@@ -1,15 +1,10 @@
-import './App.css';
+import './myStyle.scss';
 
 
 function App() {
-  const myHeader = {
-    color: 'red',
-    fontSize: '200px',
-    }
-
   return (
-    <div className="App-header">
-      <h1 style={myHeader}>Hello</h1>
+    <div>
+      <h1>Hello</h1>
     </div>
   );
 }
