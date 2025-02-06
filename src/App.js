@@ -1,54 +1,24 @@
-import { useState, createContext, useContext } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './App.css';
 
-const UserContext = createContext();
-
-function Component1({ name }) {
-  return (
-    <div>
-      <h1>{`Hello ${name}!`}</h1>
-      <Component2 name={name} />
-    </div>
-  );
-}
-
-function Component2({ name }) {
-  return (
-    <div>
-      <h1>{`Hello ${name}!`}</h1>
-      <Component3 name={name} />
-    </div>
-  );
-}
-
-function Component3({ name }) {
-  return (
-    <div>
-      <h1>{`Hello ${name}!`}</h1>
-      <Component4 />
-    </div>
-  );
-}
-
-function Component4() {
-  const name = useContext(UserContext);
-
-  return (
-    <div>
-      <h1>{`Hello ${name}!`}</h1>
-    </div>
-  );
-}
-
 function App() {
-  const [name] = useState('Rafi asyam');
+  const [inputValue, setInputValue] = useState('');
+  const count = useRef(0);
+
+  useEffect(() => {
+    count.current = count.current + 1;
+  });
+
+  
 
   return (
     <div>
-      <UserContext.Provider value={name}>
-        <h1>{`Hello ${name}!`}</h1>
-        <Component1 name={name} />
-      </UserContext.Provider>
+      <input
+        type='text'
+        value={inputValue}
+        onChange={((e) => setInputValue(e.target.value))}
+      />
+      <h3>Render Count : {count.current}</h3>
     </div>
   );
 }
