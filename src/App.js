@@ -1,24 +1,51 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.css';
 
 
-function App() {
-  const [count, setCount] = useState(0);
-  
-
-
-  useEffect(() => {
-    let timer = setTimeout(() => {
-      setCount((count) => count + 1);
-    }, 1000);
-
-    return () => clearTimeout(timer)
-  }, []);
-
+function Component1({ name }) {
 
   return (
     <div>
-      <h1>Time rendered: {count}</h1>
+      <h1>{`Hello ${name}!`}</h1>
+      <Component2 name={name} />
+    </div>
+  )
+}
+
+function Component2({ name }) {
+  return (
+    <div>
+      <h1>{`Hello ${name}!`}</h1>
+      <Component3 name={name} />
+    </div>
+  )
+}
+
+function Component3({ name }) {
+  return (
+    <div>
+      <h1>{`Hello ${name}!`}</h1>
+      <Component4 name={name} />
+    </div>
+  )
+}
+
+function Component4({ name }) {
+  return (
+    <div>
+      <h1>{`Hello ${name}!`}</h1>
+    </div>
+  )
+}
+
+
+function App() {
+  const [name] = useState('Rafi asyam');
+
+  return (
+    <div>
+      <h1>App</h1>
+      <Component1 name={name} />
     </div>
   );
 }
