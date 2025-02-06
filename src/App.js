@@ -1,23 +1,56 @@
-import { useRef, useState, useEffect } from 'react';
+import { useReducer } from 'react';
 import './App.css';
 
-function App() {
-  const [inputValue, setInputValue] = useState("");
-  const previousInputValue = useRef("");
+const initialTodos = [
+  {
+    id: 1,
+    title: 'keren',
+    complate: false,
+  },
+  {
+    id: 2,
+    title: 'baik',
+    complate: true,
+  }
+]
 
-  useEffect(() => {
-    previousInputValue.current = inputValue;
-  }, [inputValue]);
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "Complate":
+      return state.map((todo) => {
+        if (todo.id === action.id) {
+          return { ...todo, complate: !todo.complate }
+        } else {
+          return todo;
+        }
+      });
+    default:
+      return state;
+  }
+};
+
+function App() {
+  const [todos, dispatch] = useReducer(reducer, initialTodos)
+
+  const handleComplate = (todo) => {
+    dispatch({ type: "COMPLATE", id: todo.id })
+  }
+
 
   return (
     <>
-      <input
-        type="text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-      />
-      <h2>Current Value: {inputValue}</h2>
-      <h2>Previous Value: {previousInputValue.current}</h2>
+      {todos.map((todo) => (
+        <div key={todo}>
+          <label>
+            <input
+              type='checkbox'
+              checked={todo.complate}
+              onChange={() => handleComplate(todo)}
+            />
+            {todo.title}
+          </label>
+        </div>
+      ))}
     </>
   );
 }
