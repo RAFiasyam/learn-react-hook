@@ -1,56 +1,28 @@
-import { useReducer } from 'react';
+import { useState } from 'react';
 import './App.css';
-
-const initialTodos = [
-  {
-    id: 1,
-    title: 'keren',
-    complate: false,
-  },
-  {
-    id: 2,
-    title: 'baik',
-    complate: true,
-  }
-]
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "Complate":
-      return state.map((todo) => {
-        if (todo.id === action.id) {
-          return { ...todo, complate: !todo.complate }
-        } else {
-          return todo;
-        }
-      });
-    default:
-      return state;
-  }
-};
+import Todos from './Todos'
 
 function App() {
-  const [todos, dispatch] = useReducer(reducer, initialTodos)
+  const [count, setCount] = useState(0)
+  const [todos, setTodos] = useState([])
 
-  const handleComplate = (todo) => {
-    dispatch({ type: "COMPLATE", id: todo.id })
+  const increment = () => {
+    setCount((c) => c + 1);
   }
 
+  const addTodo = () => {
+    setTodos((t) => [...t, "new todo"]);
+  }
 
   return (
     <>
-      {todos.map((todo) => (
-        <div key={todo}>
-          <label>
-            <input
-              type='checkbox'
-              checked={todo.complate}
-              onChange={() => handleComplate(todo)}
-            />
-            {todo.title}
-          </label>
+      <Todos todos={todos} addTodo={addTodo}>
+        <hr />
+        <div>
+          Count: {count}
+          <button onClick={increment}>+</button>
         </div>
-      ))}
+      </Todos>
     </>
   );
 }
