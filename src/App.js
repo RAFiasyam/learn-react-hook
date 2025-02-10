@@ -1,14 +1,8 @@
-import { useState, useEffect } from 'react';
 import './App.css';
+import useFecth from './useFetch';
 
 function App() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/todos')
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  })
+  const [data] = useFecth('https://jsonplaceholder.typicode.com/todos');
 
   return (
     <>
