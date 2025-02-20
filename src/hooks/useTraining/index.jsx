@@ -1,29 +1,33 @@
 import { useEffect, useState } from "react";
 
 
-// Level 1, Num 1
+// Level 1, Num 2
 export const TrainingExample = () => {
-    const [count, setCount] = useState(0)
-    const [isRunning, setIsRunning] = useState(false);
+    const [quote, setQuote] = useState('');
+    const [author, setAuthor] = useState('');
+
+    const fetchQuote = async () => {
+        try {
+            const res = await fetch("https://api.allorigins.win/raw?url=https://zenquotes.io/api/random");
+            const data = await res.json();
+            setQuote(data[0].q);
+            setAuthor(data[0].a);
+        } catch (error) {
+            console.error("Error fecthing quote : ", error)
+        }
+    };
 
     useEffect(() => {
-        if (!isRunning) return;
-
-        const interval = setInterval(() => {
-            setCount((prevCount) => prevCount + 1)
-        }, 3000)
-
-        return () => clearInterval(interval)
-    }, [isRunning])
+        fetchQuote();
+    }, [])
 
     return (
         <>
             <div>
-                <h1>{count}</h1>
-                <button onClick={() => setIsRunning((prev) => !prev)}>
-                    {isRunning? "Pause" : "Start"}
-                </button>
-                <button onClick={() => setCount(0)}>Reset</button>
+                <h1>Random Quote Generator</h1>
+                <p>"{quote}"</p>
+                <h4>- {author}</h4>
+                <button onClick={fetchQuote}>New Quote</button>
             </div>
         </>
     );
