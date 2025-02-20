@@ -1,15 +1,11 @@
 import './App.css';
-import { ContextExample } from './hooks/useContext';
-import { EffectExample } from './hooks/useEffect';
-import { ReducerExample } from './hooks/useReducer';
-import { RefExample } from './hooks/useRef';
-import { StateExample } from './hooks/useState';
+import { TrainingExample } from './hooks/useTraining';
 
 
 function App() {
   return (
     <>
-    <IsiDulu />
+      <TrainingExample />
     </>
   );
 }
